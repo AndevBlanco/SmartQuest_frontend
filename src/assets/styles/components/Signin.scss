@@ -1,0 +1,242 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* body, html{
+    height: 100%;
+    background-color: rgb(110,94,254);
+} */
+
+#signin{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%!important;
+    background-color: rgb(110,94,254);
+}
+
+.main-signin{
+    display: grid;
+    grid-template-columns: 40%;
+    grid-template-rows: 20% 80%;
+    width: 85%;
+    height: 110%!important;
+    margin: auto;
+    justify-items: center;
+    border: 2px solid rgb(126, 112, 255)!important;
+    border-radius: 15px;
+    background-image: url('../../images/pexels-anastasiya-gepp-1462633.jpg');
+    background-size: cover;
+    -webkit-box-shadow: -4px 9px 14px -4px rgba(0,0,0,0.51);
+    -moz-box-shadow: -4px 9px 14px -4px rgba(0,0,0,0.51);
+    box-shadow: -4px 9px 14px -4px rgba(0,0,0,0.51);
+}
+
+#section-logo-signin{
+    width: 85%;
+    // background-color: black;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+}
+
+#title-signin{
+    background-color: rgb(126, 112, 255);
+    cursor: pointer;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-decoration: none!important;
+    color: #fff;
+    margin: auto;
+    padding: 5%;
+    border-radius: 15px;
+}
+
+#section-form-signin{
+    display: flex;
+    width: 100%;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#form-signin{
+    margin: auto;
+}
+
+.button-signin{
+    font-size: 1.5vw!important;
+    border-radius: 50px;
+    padding: 15px;
+    font-weight: bold;
+    // background-color: rgb(93, 75, 255);
+}
+
+/* #signinB{
+    background-color: rgb(13, 163, 71);
+    border-color:  rgb(2, 116, 45);
+} */
+
+#name-signin{
+    margin-top: 25px!important;
+}
+
+input[type=radio]{
+    height: 20px;
+    width: 20px;
+    margin-left: 25px;
+}
+input[type=radio] + label{
+    font-size: 1.5vw!important;
+    color: white!important;
+    padding-left: 50px;
+    padding-right: 1px;
+}
+
+#grade-signin{
+    padding: 10px!important;
+    background-color: white!important;
+}
+#grade-signin option{
+    background-color: white!important;
+}
+
+#email-signin, #password-signin, #name-signin, #surname-signin, #code-signin, #grade-signin, #email-signin{
+    font-size: 1.8vw;
+    padding: 22.5px;
+    border-radius: 50px;
+    width: 100%;
+    margin-top: 2.5%;
+    font-weight: bold!important;
+}
+
+@media screen and (min-width:1590px){
+    .main-signin{
+        height: 110%!important;
+    }
+    #title-signin{
+        font-size: 2.9vw!important;
+    }
+    #email-signin, #password-signin, #name-signin, #surname-signin, #code-signin, #grade-signin, #email-signin{
+        font-size: 1.9vw;
+        padding: 20px;
+        width: 100%;
+        border-radius: 65px;
+    }
+    .button-signin{
+        font-size: 1.5vw!important;
+        padding: 20px;
+    }
+    input[type=radio]{
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-left: 30px;
+    }
+    input[type=radio] + label{
+        padding-left: 115px;
+        padding-right: 1px;
+    }
+}
+
+
+@media screen and (max-width:1300px){
+    #signin{
+        height: auto!important;
+    }
+    .main-signin{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+        height: auto!important;
+    }
+
+    #title-signin{
+        font-size: 3rem!important;
+    }
+    
+
+    #section-form-signin{
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-top-right-radius: 0px!important;
+    }
+
+    #email-signin, #password-signin, #name-signin, #surname-signin, #code-signin, #grade-signin, #email-signin{
+        font-size: 2rem;
+        padding: 25px;
+        border-radius: 65px;
+        width: 100%;
+        margin-top: 5%;
+    }
+    .button-signin{
+        font-size: 1.7rem!important;
+        padding: 10px;
+    }
+    input[type=radio]{
+        height: 30px!important;
+        width: 30px!important;
+        margin-left: 25px;
+    }
+    input[type=radio] + label{
+        font-size: 2vw!important;
+        color: white!important;
+        padding-left: 75px;
+        padding-right: 1px;
+    }
+}
+
+@media screen and (max-width:700px){
+    #email-signin, #password-signin, #name-signin, #surname-signin, #code-signin, #grade-signin, #email-signin{
+        font-size: 1.6rem;
+        padding: 25px;
+        border-radius: 65px;
+    }
+    #title-signin{
+        font-size: 2rem!important;
+    }
+    .button-signin{
+        font-size: 1.4rem!important;
+        padding: 10px;
+    }
+    input[type=radio]{
+        height: 20px!important;
+        width: 20px!important;
+        margin-left: 25px;
+    }
+    input[type=radio] + label{
+        font-size: 10vw!important;
+        color: white!important;
+        padding-left: 50px;
+        padding-right: 1px;
+    }
+}
+
+@media screen and(max-width:550px){
+    .main-signin{
+        height: auto!important;
+    }
+    #title-signin{
+        font-size: 1rem!important;
+    }
+    #email-signin, #password-signin, #name-signin, #surname-signin, #code-signin, #grade-signin, #email-signin{
+        font-size: 1rem;
+        padding: 20px;
+        border-radius: 65px;
+    }
+    .button-signin{
+        font-size: 1.5rem!important;
+        padding: 10px;
+    }
+    input[type=radio]{
+        height: 15px!important;
+        width: 15px!important;
+        margin-left: 25px;
+    }
+    input[type=radio] + label{
+        font-size: 5vw!important;
+        color: white!important;
+        padding-left: 50px;
+        padding-right: 1px;
+    }
+}

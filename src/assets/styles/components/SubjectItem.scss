@@ -1,0 +1,28 @@
+.subject-card{
+    max-width: 85%;
+    margin: auto;
+    margin-top: 2vw !important;
+    -webkit-box-shadow: -9px 10px 8px -8px rgba(0,0,0,0.41);
+    -moz-box-shadow: -9px 10px 8px -8px rgba(0,0,0,0.41);
+    box-shadow: -9px 10px 8px -8px rgba(0,0,0,0.41);
+}
+
+.subject-card:hover{
+    cursor: pointer;
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    transition:0.5s;
+}
+
+.text-muted{
+    font-size: 1.5vw!important;
+}
+
+@media only screen and (max-width:700px){
+    .text-muted{
+        font-size: 0.8rem!important;
+    }
+    .subject-title{
+        font-size: 1rem!important;
+    }
+}

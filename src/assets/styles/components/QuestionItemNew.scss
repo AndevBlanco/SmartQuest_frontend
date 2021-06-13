@@ -1,0 +1,21 @@
+.new-question-card{
+    margin: auto;
+    color: black!important;
+    width: 95%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: -4px 9px 14px -4px rgba(0,0,0,0.51);
+    -moz-box-shadow: -4px 9px 14px -4px rgba(0,0,0,0.51);
+    box-shadow: -4px 9px 14px -4px rgba(0,0,0,0.51);
+}
+
+.form-control{
+    font-size: 2vw;
+    color: black;
+    font-weight: bold;
+}
+
+#description{
+    width: 100%;
+}

@@ -1,0 +1,23 @@
+.sidebar-section{
+  overflow-y: scroll;
+}
+
+.sidebar-section::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+.sidebar-section::-webkit-scrollbar-track {
+  background: #7a70ff;
+  
+}
+
+.sidebar-section::-webkit-scrollbar-thumb {
+  background: #FFFFFF;
+}
+
+
+@media only screen and (max-width: 500px){
+  .subject-card{
+    display: none;
+  }
+}
