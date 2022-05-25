@@ -4,7 +4,7 @@ import '../assets/styles/components/Answers.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, Alert } from 'react-bootstrap';
 import AnswersItemNew from './AnswersItemNew';
-import route from '../routes';
+import draftToHtml from 'draftjs-to-html';
 
 export default class Answers extends Component{
     constructor(){
@@ -23,7 +23,7 @@ export default class Answers extends Component{
 
     getAnswers(){
         try {
-            request.get(route + 'questions/')
+            request.get(process.env.REACT_APP_URL_BACKEND + 'questions/')
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .query({ 
                 id: localStorage.question_id
@@ -62,9 +62,7 @@ export default class Answers extends Component{
                         <Card.Header className="subject-name" style={{color: this.state.answers.color_subject}}>{this.state.answers.name_subject}</Card.Header>
                         <Card.Body>
                             <Card.Title>{this.state.answers.name}</Card.Title>
-                            <Card.Text>
-                                {this.state.answers.description}
-                            </Card.Text>
+                            <div dangerouslySetInnerHTML={{ __html: draftToHtml(JSON.parse(this.state.answers.description)) }} />
                             <footer className="blockquote-footer cite-student__answer">
                                 <cite title="Source Title">{this.state.answers.student}</cite>
                             </footer>
@@ -82,9 +80,7 @@ export default class Answers extends Component{
                                 <Card.Body>
                                     <h5 className="title-answers">Respuesta:</h5>
                                     <blockquote className="blockquote mb-0">
-                                    <p className="answer-card-text">
-                                        {item.description_answer}
-                                    </p>
+                                    <div className="answer-card-text" dangerouslySetInnerHTML={{ __html: draftToHtml(JSON.parse(item.description_answer)) }} />
                                     <footer className="blockquote-footer">
                                         Profesor: <cite title="Source Title">{item.teacher}</cite>
                                     </footer>

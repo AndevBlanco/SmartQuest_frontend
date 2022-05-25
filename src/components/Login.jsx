@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import request from 'superagent';
-import route from '../routes';
 import '../assets/styles/components/Login.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Button, Form } from 'react-bootstrap';
@@ -29,7 +28,7 @@ export default class Login extends Component{
         e.preventDefault();
         try {
             request
-            .post(route + 'users/login')
+            .post(process.env.REACT_APP_URL_BACKEND + 'users/login')
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .send({
                 xusername: this.state.xusername,
@@ -37,9 +36,8 @@ export default class Login extends Component{
             })
             .end((err, res) => {
                 if(err){
-                    return null;
-                }
-                if(res && res.text){
+                    alert("Error al ingresar: email no existe");
+                }else if(res && res.text){
                     var response = JSON.parse(res.text);
                     if(response.login === true){
                         if(typeof(Storage) !== 'undefined'){
@@ -54,12 +52,12 @@ export default class Login extends Component{
                             login: true
                         });
                     }else if(response.login === false){
-                        alert("Error al ingresar, por favor verifique los datos ingresados");
+                        alert("Error al ingresar: por favor verifique los datos ingresados");
                     }
                 }
             });
         } catch (error) {
-            alert("Error al ingresar, por favor verifique los datos ingresados");
+            alert("Error al ingresar: por favor verifique los datos ingresados");
         }
     }
 

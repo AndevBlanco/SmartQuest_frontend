@@ -3,7 +3,8 @@ import request from 'superagent';
 import '../assets/styles/components/AnswersItemNew.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Alert } from 'react-bootstrap';
-import route from '../routes';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default class AnswersItemNew extends Component {
     constructor() {
@@ -13,6 +14,7 @@ export default class AnswersItemNew extends Component {
             savedAnswer: false,
             errorAnswer: false,
         }
+        this.handleChangeEditor = this.handleChangeEditor.bind(this);
     }
 
     handleChange({ target }) {
@@ -21,11 +23,17 @@ export default class AnswersItemNew extends Component {
         });
     }
 
+    handleChangeEditor(target){
+        this.setState({
+            description_answer: JSON.stringify(target)
+        });
+    }
+
     saveAnswer(event) {
         event.preventDefault();
         try {
             request
-                .put(route + 'questions/answer')
+                .put(process.env.REACT_APP_URL_BACKEND + 'questions/answer')
                 .set('Content-Type', 'application/x-www-form-urlencoded')
                 .query({
                     id: localStorage.getItem("question_id")
@@ -59,7 +67,9 @@ export default class AnswersItemNew extends Component {
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
                             <h5 className="title-new__answer">Respuesta:</h5>
-                            <textarea className="answer-input__description" name="description_answer" id="" rows="3" placeholder="Descripción" onChange={this.handleChange.bind(this)}></textarea>
+                            <div className="sub-container-card">
+                                <Editor wrapperClassName="wrapper" toolbar={{ options: ['inline', 'list', 'link', 'emoji', 'embedded'], inline: {options: ['bold', 'italic', 'strikethrough']}}} id="description_answer" placeholder="Descripción" onChange={this.handleChangeEditor} required></Editor>
+                            </div>
                         </blockquote>
                         <button className="btn-share__response btn btn-success" onClick={this.saveAnswer.bind(this)}>Publicar Respuesta</button>
                     </Card.Body>

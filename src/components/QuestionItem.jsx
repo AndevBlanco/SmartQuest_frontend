@@ -4,7 +4,7 @@ import request from 'superagent';
 import '../assets/styles/components/QuestionItem.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Alert, Row } from 'react-bootstrap';
-import route from '../routes';
+import draftToHtml from 'draftjs-to-html';
 
 export default class QuestionItem extends Component {
     constructor(props) {
@@ -50,7 +50,7 @@ export default class QuestionItem extends Component {
         console.log("refresh");
         if (localStorage.type_user === 'student') {
             try {
-                request.get(route + 'questions/byGrade' + opt)
+                request.get(process.env.REACT_APP_URL_BACKEND + 'questions/byGrade' + opt)
                     .set('Content-Type', 'application/x-www-form-urlencoded')
                     .query({
                         grade: localStorage.grade,
@@ -63,7 +63,6 @@ export default class QuestionItem extends Component {
                                 questions: questions,
                                 loadedQuestion: true
                             });
-                            console.log(questions);
                         } catch (error) {
                             console.log("Error: " + error);
                             this.setState({ loadedQuestion: false });
@@ -75,7 +74,7 @@ export default class QuestionItem extends Component {
             }
         } else {
             try {
-                request.get(route + 'questions/getAll' + opt)
+                request.get(process.env.REACT_APP_URL_BACKEND + 'questions/getAll' + opt)
                     .set('Content-Type', 'application/x-www-form-urlencoded')
                     .query({
                         subject_filter: localStorage.getItem("search_subject")
@@ -87,7 +86,6 @@ export default class QuestionItem extends Component {
                                 questions: questions,
                                 loadedQuestion: true
                             });
-                            console.log(questions);
                         } catch (error) {
                             console.log("Error: " + error);
                             this.setState({ loadedQuestion: false });
@@ -111,9 +109,7 @@ export default class QuestionItem extends Component {
                                 <Card.Header className={"subject-name"} style={{ color: item.color_subject }}>{item.name_subject}</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>
-                                    <Card.Text>
-                                        {item.description}
-                                    </Card.Text>
+                                    <div dangerouslySetInnerHTML={{ __html: draftToHtml(JSON.parse(item.description)) }} />
                                     <blockquote className="blockquote mb-0">
                                         <footer className="text-muted">
                                             <i className="far fa-edit icon-answer"></i>

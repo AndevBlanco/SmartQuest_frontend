@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import request from 'superagent';
-import route from '../routes';
 import '../assets/styles/components/QuestionItemNew.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Form } from 'react-bootstrap';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default class QuestionItemNew extends Component{
 
@@ -11,15 +12,22 @@ export default class QuestionItemNew extends Component{
         super(props);
         this.state = {
             title: '',
-            description: '',
+            description: [],
             subject: ''
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeEditor = this.handleChangeEditor.bind(this);
     }
 
     handleChange({ target }){
         this.setState({
             [target.id] : target.value
+        });
+    }
+
+    handleChangeEditor(target){
+        this.setState({
+            description: JSON.stringify(target)
         });
     }
 
@@ -37,7 +45,7 @@ export default class QuestionItemNew extends Component{
                 var save_subject = (this.props.subjects).find((item, index) => item.name == this.state.subject);
 
                 request
-                .post(route + 'questions/')
+                .post(process.env.REACT_APP_URL_BACKEND + 'questions/')
                 .set('Content-Type', 'application/x-www-form-urlencoded')
                 .send({ 
                     date: new Date(),
@@ -78,13 +86,15 @@ export default class QuestionItemNew extends Component{
                             </select>
                         </Card.Header>
                         <Card.Body>
-                                <Card.Title>
-                                    <input type="text" className="form-control" id="title" placeholder="Título" onChange={this.handleChange} required/>
-                                </Card.Title>
-                                <Card.Text>
-                                    <textarea rows="5" className="form-control" id="description" placeholder="Descripción" onChange={this.handleChange} required></textarea>
-                                </Card.Text>
+                            <div className="sub-container-card">
+                                <input type="text" className="form-control" id="title" placeholder="Título" onChange={this.handleChange} required/>
+                            </div>
+                            <div className="sub-container-card">
+                                <Editor wrapperClassName="wrapper" toolbar={{ options: ['inline', 'list', 'link', 'emoji', 'embedded'], inline: {options: ['bold', 'italic', 'strikethrough']}}} id="description" placeholder="Descripción" onChange={this.handleChangeEditor} required></Editor>
+                            </div>
+                            <div className="sub-container-card">
                                 <button className="btn-share" onClick={this.saveQuestion.bind(this)}>Publicar Pregunta</button>
+                            </div>
                         </Card.Body>
                     </Card>
                 </section>
