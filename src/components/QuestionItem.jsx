@@ -52,6 +52,7 @@ export default class QuestionItem extends Component {
             try {
                 request.get(process.env.REACT_APP_URL_BACKEND + 'questions/byGrade' + opt)
                     .set('Content-Type', 'application/x-www-form-urlencoded')
+                    .set('authorization', document.cookie.replace('token=', ''))
                     .query({
                         grade: localStorage.grade,
                         subject: localStorage.getItem("search_subject")

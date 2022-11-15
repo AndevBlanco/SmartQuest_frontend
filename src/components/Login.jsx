@@ -47,6 +47,9 @@ export default class Login extends Component{
                             localStorage.setItem("code", response.code);
                             localStorage.setItem("grade", response.grade);
                             localStorage.setItem("type_user", response.type_user);
+
+                            document.cookie = `token=${response.token}; max-age=${60 * 2}; path=/; samesite=strict`
+                            console.log(document.cookie);
                         }
                         this.setState({
                             login: true
