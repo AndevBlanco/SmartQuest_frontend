@@ -21,3 +21,4 @@ artifacts:
     - package.json
     - appspec.yml
     - scripts/**/*
+  file_exists_behavior: OVERWRITE
