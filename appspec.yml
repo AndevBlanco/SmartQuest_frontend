@@ -5,7 +5,7 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/server
+    destination: /home/ubuntu/SmartQuest_frontend
 
 permissions:
   - object: /
