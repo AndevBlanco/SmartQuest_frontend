@@ -6,6 +6,8 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/SmartQuest_frontend
+    overwrite: true
+file_exists_behavior: OVERWRITE
 
 permissions:
   - object: /
