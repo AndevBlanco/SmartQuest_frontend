@@ -1,4 +1,4 @@
-cd /home/ubuntu/SmartQuest_frontend/src
+cd /home/ubuntu/SmartQuest_frontend
 npm start
 # pm2 start npm --name "covidapp" -- start
 # pm2 startup
