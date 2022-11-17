@@ -1,5 +1,4 @@
-cd /home/ubuntu/SmartQuest_frontend/src
-npm start
+cd /home/ubuntu/SmartQuest_frontend
 pm2 start npm --name "sq.frontend" -- start
 pm2 startup
 pm2 save
