@@ -31,8 +31,3 @@ hooks:
     - location: scripts/app_start.sh
       timeout: 500
       runas: root
-
-  ApplicationProd:
-    - location: scripts/app_prod.sh
-      timeout: 500
-      runas: root
